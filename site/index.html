@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Catálogo de Normas Técnicas Peruanas — Índice no oficial de la Tienda Virtual de INACAL</title>
+<meta name="description" content="Índice de consulta (no oficial) de las normas, guías y publicaciones disponibles en la Tienda Virtual del Instituto Nacional de Calidad (INACAL) del Perú. Buscador con filtros por tipo, año, ICS, palabras clave y más.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%23F7B500'/><text x='50' y='70' font-size='55' text-anchor='middle' font-family='Arial' font-weight='bold' fill='%23111'>N</text></svg>">
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <div class="brand">
+      <div class="brand-logo" aria-hidden="true">NTP</div>
+      <div class="brand-text">
+        <h1>Catálogo de Normas Técnicas Peruanas</h1>
+        <p class="brand-sub">Índice de consulta <strong>no oficial</strong> de la <a href="https://tiendavirtual.inacal.gob.pe/" target="_blank" rel="noopener">Tienda Virtual de INACAL</a></p>
+      </div>
+    </div>
+    <div class="header-meta">
+      <span id="metaGenerado" class="meta-chip" title="Fecha en que se extrajo la información de la tienda oficial">Datos: —</span>
+      <span id="metaTotal" class="meta-chip">— registros</span>
+    </div>
+  </div>
+</header>
+
+<div class="notice-bar">
+  <div class="container">
+    ⚠️ Este sitio es un índice informativo independiente. Los documentos se adquieren únicamente en la
+    <a href="https://tiendavirtual.inacal.gob.pe/" target="_blank" rel="noopener">tienda oficial de INACAL</a>.
+    No se distribuyen aquí normas de pago.
+  </div>
+</div>
+
+<main class="container layout">
+
+  <!-- ============ PANEL DE FILTROS ============ -->
+  <aside class="filters" id="filtersPanel" aria-label="Filtros de búsqueda">
+    <div class="filters-head">
+      <h2>Filtros</h2>
+      <button id="btnLimpiar" class="btn btn-ghost btn-sm" type="button" title="Restablece todos los filtros y la búsqueda">Limpiar todo</button>
+    </div>
+
+    <div class="filter-group">
+      <label for="fTipo">Tipo de documento <span class="help" tabindex="0" data-tip="Prefijo del código que indica la clase de documento: NTP (Norma Técnica Peruana), NTP-ISO / NTP-ISO/IEC / NTP-IEC / NTP-CODEX (adopciones de normas internacionales), GP (Guía Peruana), GIP (Guía de Implementación Peruana), ETP (Especificación Técnica Peruana), RTP (Reporte Técnico Peruano), EDP (Especificación Disponible Peruana), ASP (Acuerdo Sectorial Peruano), NA (Norma Andina), NMP (Norma Metrológica Peruana).">(?)</span></label>
+      <select id="fTipo" multiple size="6" aria-label="Tipo de documento (selección múltiple)"></select>
+      <p class="hint">Ctrl/Cmd + clic para elegir varios</p>
+    </div>
+
+    <div class="filter-group">
+      <label for="fAnio">Año de publicación <span class="help" tabindex="0" data-tip="Año en que INACAL publicó el documento (según el campo “Publicado” de la ficha oficial).">(?)</span></label>
+      <div class="row-2">
+        <select id="fAnio"><option value="">Todos</option></select>
+      </div>
+    </div>
+
+    <div class="filter-group">
+      <label>Rango de fechas de publicación <span class="help" tabindex="0" data-tip="Filtra por la fecha exacta de publicación indicada en la ficha oficial (formato AAAA/MM/DD). Puede indicar solo “desde”, solo “hasta”, o ambas.">(?)</span></label>
+      <div class="row-2">
+        <input type="date" id="fDesde" aria-label="Fecha desde">
+        <input type="date" id="fHasta" aria-label="Fecha hasta">
+      </div>
+    </div>
+
+    <div class="filter-group">
+      <label for="fCodigo">Código de la norma <span class="help" tabindex="0" data-tip="Identificador oficial del documento, p. ej. “NTP 900.054:2012” o “NTP-ISO 9001”. Puede escribir solo una parte (ej. “900.054” o “9001”).">(?)</span></label>
+      <input type="text" id="fCodigo" placeholder="Ej.: NTP-ISO 9001, 900.054…">
+    </div>
+
+    <div class="filter-group">
+      <label for="fIcs">Clasificación ICS <span class="help" tabindex="0" data-tip="International Classification for Standards: sistema internacional que agrupa las normas por campo temático (p. ej. 13.020 = Protección del medio ambiente). Un documento puede pertenecer a varias categorías ICS.">(?)</span></label>
+      <select id="fIcs"><option value="">Todas las categorías</option></select>
+    </div>
+
+    <div class="filter-group">
+      <label for="fPalabras">Palabras clave (descriptores) <span class="help" tabindex="0" data-tip="Términos temáticos asignados por INACAL a cada documento (p. ej. “gestión ambiental”, “aceites usados”). Se busca dentro de la lista de descriptores de la ficha.">(?)</span></label>
+      <input type="text" id="fPalabras" placeholder="Ej.: residuos, café, seguridad…">
+    </div>
+
+    <div class="filter-group">
+      <label for="fPdf">Disponibilidad de PDF público <span class="help" tabindex="0" data-tip="“Con PDF público” muestra solo los documentos que INACAL ofrece en descarga gratuita y abierta (p. ej. Guías de Implementación). El resto de documentos se adquiere en la tienda oficial.">(?)</span></label>
+      <select id="fPdf">
+        <option value="">Todos</option>
+        <option value="si">Con PDF público</option>
+        <option value="no">Sin PDF público</option>
+      </select>
+    </div>
+
+    <div class="filter-group">
+      <label for="fPago">Gratuito o de pago <span class="help" tabindex="0" data-tip="“Gratuito” incluye los documentos con precio S/ 0.00 o con descarga pública autorizada por INACAL. “De pago” son los que tienen precio en la tienda oficial.">(?)</span></label>
+      <select id="fPago">
+        <option value="">Todos</option>
+        <option value="gratuito">Gratuito</option>
+        <option value="pago">De pago</option>
+      </select>
+    </div>
+
+    <div class="filter-group">
+      <label for="fEstado">Estado <span class="help" tabindex="0" data-tip="Estado derivado del código oficial: “Revisada/confirmada” cuando el código incluye la anotación “(revisada el AAAA)” — es decir, la norma fue ratificada sin cambios en esa fecha —; “Publicada” en el resto de casos. La vigencia definitiva debe verificarse con INACAL.">(?)</span></label>
+      <select id="fEstado">
+        <option value="">Todos</option>
+        <option value="publicada">Publicada</option>
+        <option value="revisada">Revisada / confirmada</option>
+      </select>
+    </div>
+
+    <div class="filter-group">
+      <label for="fDigital">Formato <span class="help" tabindex="0" data-tip="“Sólo digital” marca los productos que la tienda oficial vende únicamente en formato electrónico (PDF), sin versión impresa.">(?)</span></label>
+      <select id="fDigital">
+        <option value="">Todos</option>
+        <option value="digital">Sólo formato digital</option>
+      </select>
+    </div>
+  </aside>
+
+  <!-- ============ RESULTADOS ============ -->
+  <section class="results" aria-label="Resultados">
+
+    <div class="searchbar">
+      <div class="search-input-wrap">
+        <input type="search" id="q" placeholder="Buscar por código, título, resumen o palabras clave…" aria-label="Búsqueda general">
+        <span class="help" tabindex="0" data-tip="Búsqueda general: examina código, título, resumen y descriptores a la vez. Escriba varias palabras para exigir que aparezcan todas. Use comillas dobles para buscar una frase exacta, p. ej. &quot;sistema de gestión&quot;.">(?)</span>
+      </div>
+      <button class="btn btn-filtros" id="btnToggleFiltros" type="button" aria-expanded="false" aria-controls="filtersPanel">☰ Filtros</button>
+    </div>
+
+    <div class="toolbar">
+      <div id="contador" class="counter" role="status">Cargando catálogo…</div>
+      <div class="toolbar-right">
+        <label class="sort-label" for="orden">Ordenar <span class="help" tabindex="0" data-tip="“Relevancia” ordena por coincidencia con el texto buscado (solo cuando hay búsqueda activa). Los demás criterios ordenan por el campo indicado.">(?)</span></label>
+        <select id="orden">
+          <option value="relevancia">Relevancia</option>
+          <option value="codigo-asc">Código A→Z</option>
+          <option value="codigo-desc">Código Z→A</option>
+          <option value="fecha-desc">Más recientes</option>
+          <option value="fecha-asc">Más antiguas</option>
+          <option value="precio-asc">Precio menor</option>
+          <option value="precio-desc">Precio mayor</option>
+          <option value="titulo-asc">Título A→Z</option>
+        </select>
+        <div class="view-toggle" role="group" aria-label="Modo de vista">
+          <button id="btnVistaTarjetas" class="btn btn-sm active" type="button" title="Ver como tarjetas">▦</button>
+          <button id="btnVistaTabla" class="btn btn-sm" type="button" title="Ver como tabla">☷</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="chips" class="chips" aria-live="polite"></div>
+
+    <div id="estadoCarga" class="load-state" hidden></div>
+
+    <div id="listado" class="cards"></div>
+
+    <div class="pager" id="pager" hidden>
+      <button class="btn" id="pgPrev" type="button">← Anterior</button>
+      <span id="pgInfo"></span>
+      <button class="btn" id="pgNext" type="button">Siguiente →</button>
+      <select id="pgSize" title="Resultados por página">
+        <option value="24">24 / pág.</option>
+        <option value="48">48 / pág.</option>
+        <option value="96">96 / pág.</option>
+      </select>
+    </div>
+  </section>
+</main>
+
+<!-- ============ VISOR PDF ============ -->
+<div class="modal" id="pdfModal" hidden role="dialog" aria-modal="true" aria-labelledby="pdfTitle">
+  <div class="modal-box">
+    <div class="modal-head">
+      <h3 id="pdfTitle">Visor de PDF</h3>
+      <div class="modal-actions">
+        <a id="pdfExterno" class="btn btn-sm" href="#" target="_blank" rel="noopener">Abrir en pestaña nueva ↗</a>
+        <button class="btn btn-sm btn-dark" id="pdfCerrar" type="button">✕ Cerrar</button>
+      </div>
+    </div>
+    <div class="modal-body">
+      <iframe id="pdfFrame" title="Documento PDF"></iframe>
+      <div id="pdfAviso" class="pdf-aviso" hidden>
+        No fue posible mostrar el PDF dentro de la página (el servidor de origen puede impedir la inserción).
+        Use el botón “Abrir en pestaña nueva”.
+      </div>
+    </div>
+  </div>
+</div>
+
+<input type="file" id="pdfLocal" accept="application/pdf" hidden>
+
+<footer class="site-footer">
+  <div class="container">
+    <p><strong>Fuente de los datos:</strong> fichas públicas de producto de la
+      <a href="https://tiendavirtual.inacal.gob.pe/" target="_blank" rel="noopener">Tienda Virtual de INACAL</a>
+      (Instituto Nacional de Calidad, Perú). Cada registro conserva el enlace a su ficha original y la fecha de consulta.</p>
+    <p>Este proyecto no está afiliado a INACAL ni lo sustituye. Los precios y la vigencia pueden cambiar:
+      verifique siempre en la tienda oficial antes de comprar. No se aloja ningún documento con derechos reservados;
+      los únicos PDF enlazados son los publicados gratuitamente por INACAL en sus portales oficiales.</p>
+    <p id="footGenerado"></p>
+  </div>
+</footer>
+
+<script src="assets/js/app.js"></script>
+</body>
+</html>
