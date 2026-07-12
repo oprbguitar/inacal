@@ -1,5 +1,7 @@
 # Catálogo de Normas Técnicas Peruanas — índice no oficial de la Tienda Virtual de INACAL
 
+**🌐 Página pública:** <https://oprbguitar.github.io/inacal/>
+
 Sitio estático (GitHub Pages) que indexa las fichas públicas de producto de la
 [Tienda Virtual de INACAL](https://tiendavirtual.inacal.gob.pe/) — normas técnicas peruanas
 (NTP, NTP-ISO, NTP-ISO/IEC, NTP-IEC, NTP-CODEX), guías (GP, GIP), especificaciones (ETP, EDP),
